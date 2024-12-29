@@ -24,16 +24,17 @@ public class UserService {
         if(user.isEmpty()) {
             throw new RuntimeException("User not found");
         }
-         return user.get();
+
+        return user.get();
     }
 
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
-    public User updateUser(User user) {
+    public User updateUser(User user, int id) {
 
-        Optional<User> userOptional = userRepository.findById(user.getId());
+        Optional<User> userOptional = userRepository.findById(id);
 
         if(userOptional.isEmpty()) {
             throw new RuntimeException("User not found");
